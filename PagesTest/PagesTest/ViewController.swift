@@ -35,10 +35,16 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
                                     (title:"title 3", description:"description for \n title 3"),
                                     (title:"title 4", description:"description for \n title 4")]
     
+    var arrayViewControllers: [UIViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // PagesWidget (i.e. UIPageViewController) initialization and configuration.
+        // Array containing UIViewControllers which are in fact under the hood 
+        // downcasted ContentViewControllers.
+        self.initArrayViewControllers()
+        
+        // UIPageViewController initialization and configuration.
         let toolbarHeight: CGFloat = 60.0
         self.initPageViewController(toolbarHeight)
         
@@ -50,11 +56,11 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var index: Int = (viewController as! ContentViewController).index
         
-        if index == self.arrayInformationMessages.count - 1 {
-            return getViewControllerByIndex(0)
+        if index == self.arrayViewControllers.count - 1 {
+            return self.arrayViewControllers[0]
         }
         
-        return getViewControllerByIndex(++index)
+        return self.arrayViewControllers[++index]
     }
     
     // Required UIPageViewControllerDataSource method
@@ -62,10 +68,10 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         var index: Int = (viewController as! ContentViewController).index
         
         if index == 0 {
-            return getViewControllerByIndex(self.arrayInformationMessages.count - 1)
+            return self.arrayViewControllers[self.arrayViewControllers.count - 1]
         }
         
-        return getViewControllerByIndex(--index)
+        return self.arrayViewControllers[--index]
     }
     
     // Optional UIPageViewControllerDataSource method
@@ -97,12 +103,22 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         }
     }
     
+    private func initArrayViewControllers() {
+        for (var i = 0; i < self.arrayInformationMessages.count; i++) {
+            let contentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ContentViewControllerID") as! ContentViewController
+            contentViewController.index = i
+            contentViewController.titleText = self.arrayInformationMessages[i].title
+            contentViewController.descriptionText = self.arrayInformationMessages[i].description
+            self.arrayViewControllers.append(contentViewController)
+        }
+    }
+    
     private func initPageViewController(let toolbarHeight: CGFloat) {
         //        self.pageViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PagesWidgetID") as! UIPageViewController
         self.pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         
         if let pageViewController = self.pageViewController {
-            let initViewController = self.getViewControllerByIndex(0) as! ContentViewController
+            let initViewController = self.arrayViewControllers[0] as! ContentViewController
             let vcArray = [initViewController]
             let frame = self.view.frame
             pageViewController.dataSource = self
@@ -128,14 +144,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         }
         
         self.pageControl = pageControl
-    }
-    
-    private func getViewControllerByIndex(index: Int) -> UIViewController {
-        let contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewControllerID") as! ContentViewController
-        contentViewController.index = index
-        contentViewController.titleText = self.arrayInformationMessages[index].title
-        contentViewController.descriptionText = self.arrayInformationMessages[index].description
-        return contentViewController
     }
     
 }
