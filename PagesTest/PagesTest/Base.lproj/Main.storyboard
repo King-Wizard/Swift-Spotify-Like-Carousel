@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--ViewController-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" userLabel="ViewController" customClass="ViewController" customModule="PagesTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aura-background-large-1" translatesAutoresizingMaskIntoConstraints="NO" id="eSJ-Ma-fE2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eSJ-Ma-fE2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="6Th-Ge-v3M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eSJ-Ma-fE2" secondAttribute="trailing" constant="-16" id="JLL-mU-eVe"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eSJ-Ma-fE2" secondAttribute="bottom" id="PKr-3j-ycZ"/>
+                            <constraint firstItem="eSJ-Ma-fE2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="quY-EW-MRC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10" y="501"/>
+        </scene>
+        <!--ContentViewController-->
+        <scene sceneID="gEI-Px-1aE">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewControllerID" id="S2T-Yk-Odm" userLabel="ContentViewController" customClass="ContentViewController" customModule="PagesTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iO1-VW-YfT"/>
+                        <viewControllerLayoutGuide type="bottom" id="7qm-dg-hnk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aRP-T5-NXZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dma-WC-3Jn">
+                                <rect key="frame" x="16" y="538" width="568" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="sT0-th-o3d"/>
+                                </constraints>
+                                <string key="text">Some bullshit text
+this is another line</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX3-ki-Nwa">
+                                <rect key="frame" x="255" y="509" width="90" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="PgB-wl-hlE"/>
+                                    <constraint firstAttribute="width" constant="90" id="wK6-09-E9h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dma-WC-3Jn" firstAttribute="leading" secondItem="aRP-T5-NXZ" secondAttribute="leadingMargin" id="I46-wp-wQq"/>
+                            <constraint firstItem="7qm-dg-hnk" firstAttribute="top" secondItem="Dma-WC-3Jn" secondAttribute="bottom" constant="8" id="PNW-MD-idg"/>
+                            <constraint firstItem="Dma-WC-3Jn" firstAttribute="top" secondItem="PX3-ki-Nwa" secondAttribute="bottom" constant="8" id="Rcc-re-rs2"/>
+                            <constraint firstAttribute="centerX" secondItem="PX3-ki-Nwa" secondAttribute="centerX" id="mhN-uj-TG6"/>
+                            <constraint firstItem="Dma-WC-3Jn" firstAttribute="trailing" secondItem="aRP-T5-NXZ" secondAttribute="trailingMargin" id="yds-S1-k9t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelOutlet" destination="PX3-ki-Nwa" id="dGx-E8-4A8"/>
+                        <outlet property="textViewOutlet" destination="Dma-WC-3Jn" id="d1f-WF-ltH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kos-G1-5sS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719" y="501"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="aura-background-large-1" width="800" height="600"/>
+    </resources>
+</document>
